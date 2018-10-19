@@ -5,18 +5,19 @@ package symbols;
  */
 public class Letters {
 
-	// TODO: if needed fill in the letters
+	// if needed fill in the letters
 
 	// Individual letters
-	final static protected char[] alpha = {};
+	final static public char[] alpha = "abcdefghijklmnopqrstuvwxyz".concat("abcdefghijklmnopqrstuvwxyz".toUpperCase())
+			.toCharArray();
 
 	// Individual digits
-	final static protected char[] numbers = {};
+	final static public char[] numbers = "1234567890".toCharArray();
 
 	// Underscore and digits
-	final static protected char[] underScoreNumerical = {};
+	final static public char[] underScoreNumerical = "_1234567890".toCharArray();
 
 	// Special characters like parenthesis, line breaks, ...
-	final static protected char[] special = {};
+	final static public char[] special = "()/\\,.\n".toCharArray();
 
 }
