@@ -18,6 +18,6 @@ public class Letters {
 	final static public char[] underScoreNumerical = "_1234567890".toCharArray();
 
 	// Special characters like parenthesis, line breaks, ...
-	final static public char[] special = "()/\\,.\n".toCharArray();
+	final static public char[] special = " +-()/*'\\,.\n\t\r".toCharArray();
 
 }

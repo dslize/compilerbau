@@ -18,9 +18,9 @@ public abstract class AbstractDFA {
 	protected Token token;
 
 	// use data structure for representing
-	// - states
+	// - states: enumerated by integers
 	// - final states (and sink states)
-	// - transitions of the form (state, input) -> state
+	// - transitions of the form (state, input) -> state: using a map
 	// - current state
 	protected Set<Integer> states;
 	protected Set<Integer> finalStates;
@@ -47,6 +47,8 @@ public abstract class AbstractDFA {
 		finalStates = new HashSet<>(noStates);
 		sinkStates = new HashSet<>(noStates);
 		delta = new HashMap<>();
+
+		// By default, the initial state is state 0 and has only self-loops
 		currentState = 0;
 
 		for (char letter : Letters.alpha) {

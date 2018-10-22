@@ -27,23 +27,26 @@ public class WordDFA extends AbstractDFA {
 		assert (word.length() > 0);
 
 		// build DFA recognizing the given word
+		// here we first map all transitions to the sink state
+		this.sinkStates.add(word.length() + 1);
 		for (int i = 0; i < word.length() + 2; i++) {
 			for (char letter : Letters.alpha) {
-				delta.put(new Pair<Integer, Character>(0, letter), word.length() + 1);
+				delta.put(new Pair<Integer, Character>(i, letter), word.length() + 1);
 			}
 			for (char letter : Letters.underScoreNumerical) {
-				delta.put(new Pair<Integer, Character>(0, letter), word.length() + 1);
+				delta.put(new Pair<Integer, Character>(i, letter), word.length() + 1);
 			}
 			for (char letter : Letters.special) {
-				delta.put(new Pair<Integer, Character>(0, letter), word.length() + 1);
+				delta.put(new Pair<Integer, Character>(i, letter), word.length() + 1);
 			}
 		}
 
+		// then we change the transitions that agree with the given word's characters to
+		// move along in the automaton
 		for (int i = 0; i < word.length(); i++) {
 			this.delta.put(new Pair<Integer, Character>(i, word.charAt(i)), i + 1);
 		}
 
 		this.finalStates.add(word.length());
-		this.sinkStates.add(word.length() + 1);
 	}
 }
