@@ -1,9 +1,11 @@
 package util;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Helper class for file operations.
@@ -35,6 +37,36 @@ public class FileUtil {
 		// Close stream
 		in.close();
 		return str.toString();
+	}
+
+	/**
+	 * Convert file to list of lines.
+	 * 
+	 * @param filename
+	 *            File
+	 * @return List of string corresponding to lines in file.
+	 * @throws IOException
+	 *             FileNotFoundExeption when the file does not exist or cannot
+	 *             be read.
+	 */
+	public static ArrayList<String> fileToStringLines(String filename) throws IOException {
+		ArrayList<String> lines = new ArrayList<String>();
+
+		// Try to open file
+		FileReader in = new FileReader(filename);
+		BufferedReader reader = new BufferedReader(in);
+
+		// Read lines from file
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			line = line.trim();
+			if (!line.isEmpty()) {
+				lines.add(line);				
+			}
+		}
+		reader.close();
+		in.close();
+		return lines;
 	}
 
 	/**
